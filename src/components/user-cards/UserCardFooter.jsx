@@ -9,9 +9,9 @@ function UserCardFooter(props) {
         
         }}>
             <ul className='user-card-footer-list'>
-                <div> <span class="badge user-card-footer-badge">Balıkçılık</span></div>
-                <div > <span class="badge user-card-footer-badge">Ev hayvanları</span></div>
-                <div > <span class="badge user-card-footer-badge">Fitness</span></div>
+                <div> <span  className="badge user-card-footer-badge">Balıkçılık</span></div>
+                <div > <span className="badge user-card-footer-badge">Ev hayvanları</span></div>
+                <div > <span className="badge user-card-footer-badge">Fitness</span></div>
             </ul>
             <div style={{
                 display:"flex",

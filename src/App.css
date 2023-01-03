@@ -100,6 +100,11 @@ form .form-group input:focus {
 .header-middle-side{
 
 }
+.loading-spinner-parent{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
 .header-middle-side Form{
   margin-top: 1em;
 }

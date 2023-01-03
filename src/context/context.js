@@ -5,17 +5,17 @@ export const Context = createContext();
 
 const ModalContext  = ({children}) => {
 
-    const [deneme, setDeneme] = useState(true)
+    const [loader, setLoader] = useState(true)
 
 
 
     return(
         <Context.Provider value = {{
-            deneme , setDeneme
+            loader , setLoader
             }}>
-
+                {children}
         </Context.Provider>
     )
 }
 
-export default ModalContext
+export default ModalContext;

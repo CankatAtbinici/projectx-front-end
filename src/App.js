@@ -15,6 +15,7 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import TopBar from './components/top-bar/Top-Bar';
 import Login from './pages/login/Login';
+import ModalContext from './context/context';
 
 
 
@@ -24,8 +25,10 @@ import Login from './pages/login/Login';
 function App() {
 
   return (
+    <ModalContext>
 <div style={{width: "90%"  }}>
-<Router>
+
+  <Router>
       <Routes>
         <Route exact path="/" element={<Home/>} />
         <Route path="/profile" element={<Profile/>} />
@@ -36,8 +39,9 @@ function App() {
       <Footer />
     </Router>
 
- 
 </div>
+
+</ModalContext>
   );
 }
 

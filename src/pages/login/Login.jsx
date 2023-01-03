@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Form } from 'react-router-dom';
 import { FormGroup, Input,Layer,Button } from 'reactstrap';
-import LoginComponent from '../../components/log-in/Login';
-import axios from 'axios';
+import axios from "axios"
 
 
 function Login(props) {
