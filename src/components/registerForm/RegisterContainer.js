@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import StepOneRegister from "./StepOneRegister";
 import StepTwoRegister from "./StepTwoRegister";
 import { Button, Form } from "reactstrap";
+import Swal from 'sweetalert2';
 
 function RegisterContainer() {
+
   const [steps, setSteps] = useState(1);
   const [birthday, setBirthday] = useState(
     new Date().toISOString().substr(0, 10)
@@ -11,8 +13,30 @@ function RegisterContainer() {
   const [formData, setFormData] = useState({});
 
   const nextStepEventHandler = () => {
-    setSteps(steps + 1);
-    console.log(steps);
+    if(steps== 1 ){
+      setSteps(steps + 1);
+    }else if(steps==2){
+      Swal.fire({
+        title: 'Form Gönderiliyor',
+        text: "Vermiş olduğunuz bilgilerin doğruluğunu onaylıyor musunuz ?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Onaylıyorum',
+        cancelButtonText: "Vazgeç"
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire( {
+           confirmButtonText:"Tamam",
+            title :"Form Gönderildi",
+            icon:"success"
+          }
+           
+          )
+        }
+      });
+    }
   };
   const previousButtonEventHandler = () => {
     if (steps > 1) {
@@ -86,7 +110,9 @@ function RegisterContainer() {
                     background: "#04AA6D",
                   }}
                 >
-                  Sonraki
+                {
+                  (steps == 1) ? "Sonraki" : "Gönder"
+                }
                 </Button>
               
             </div>

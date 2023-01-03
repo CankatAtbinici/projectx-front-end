@@ -7,7 +7,7 @@ function StepTwoRegister(props) {
   return (
     <div>
       <FormGroup>
-        <Label for="country">Country</Label>
+        <Label for="country">Ülke</Label>
         <Input
           type="select"
           name="country"
@@ -23,7 +23,7 @@ function StepTwoRegister(props) {
       </FormGroup>
 
       <FormGroup>
-        <Label for="country">Country</Label>
+        <Label for="city">Şehir</Label>
         <Input
           type="select"
           name="city"
@@ -37,6 +37,23 @@ function StepTwoRegister(props) {
           <option value="Denizli">Denizli</option>
         </Input>
       </FormGroup>
+      <FormGroup>
+          <Label for="user-name">Kullanıcı Adı</Label>
+          <Input type="text" name="user-name" id="user-name" 
+          onChange={(e) => {submitRegisterFormEventHandler(e)}} required/>
+        </FormGroup>
+        
+        <FormGroup>
+          <Label for="password">Parola</Label>
+          <Input type="password" name="password" id="password" 
+          onChange={(e) => {submitRegisterFormEventHandler(e)}} required/>
+        </FormGroup>
+        
+        <FormGroup>
+          <Label for="re-password">Parola Tekrar</Label>
+          <Input type="password" name="re-password" id="re-password" 
+          onChange={(e) => {submitRegisterFormEventHandler(e)}} required/>
+        </FormGroup>
     </div>
   );
 }
