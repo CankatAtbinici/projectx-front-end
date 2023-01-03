@@ -1,0 +1,14 @@
+.about-us-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 5em;
+    flex-direction: column;
+    width: 50%;
+}
+.about-us-pharagraph{
+    padding: 3em;
+}
+.about-us-title{
+    display: flex;
+    align-self: center;
+}

@@ -55,7 +55,8 @@ function Header(props) {
                   <DropdownMenu>
                     <DropdownItem> <Link to= "/register"  style={{ textDecoration :"none " , color:"black"}} >Kayıt Ol</Link> </DropdownItem>
                     <DropdownItem> <Link to= "/login"  style={{ textDecoration :"none " , color:"black"}} > Giriş Yap </Link></DropdownItem>
-                    <DropdownItem>Projectx Nedir? </DropdownItem>
+                    <DropdownItem> <Link to= "/about-us"  style={{ textDecoration :"none " , color:"black"}} > Projectx Nedir? </Link></DropdownItem>
+                    <DropdownItem> <Link to= "/"  style={{ textDecoration :"none " , color:"black"}} > Anasayfa </Link></DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
               </div>

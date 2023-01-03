@@ -16,6 +16,8 @@ import Footer from './components/footer/footer';
 import TopBar from './components/top-bar/Top-Bar';
 import Login from './pages/login/Login';
 import ModalContext from './context/context';
+import AboutUs from './pages/about-us/AboutUs';
+
 
 
 
@@ -33,7 +35,8 @@ function App() {
         <Route exact path="/" element={<Home/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/settings" element={<Settings/>} />
-        <Route path="/register" element = {<Register/>} />
+        <Route path="about-us" element={<AboutUs/>}/>
+         <Route path="/register" element = {<Register/>} />
         <Route path="/login" element = {<Login/>} />
         </Routes>
       <Footer />
