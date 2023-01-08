@@ -20,10 +20,6 @@ import AboutUs from './pages/about-us/AboutUs';
 
 
 
-
-
-
-
 function App() {
 
   return (

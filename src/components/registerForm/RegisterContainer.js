@@ -3,52 +3,93 @@ import StepOneRegister from "./StepOneRegister";
 import StepTwoRegister from "./StepTwoRegister";
 import { Button, Form } from "reactstrap";
 import Swal from 'sweetalert2';
+import api from "../../services/api";
+import useFormValidator from "../../hooks/useFormValidater"
 
 function RegisterContainer() {
-
-  const [steps, setSteps] = useState(1);
-  const [birthday, setBirthday] = useState(
-    new Date().toISOString().substr(0, 10)
-  );
   const [formData, setFormData] = useState({});
+  const [steps, setSteps] = useState(1);
+  const [birthday, setBirthday] = useState(  new Date().toISOString().substr(0, 10));
+  const { errors, validate } = useFormValidator(formData,
+           ['name' , 'lastname' , 
+            'gender' , 'phone' , 
+            'email' , 'birthday' , 
+            'country' , 'city' , 
+            'username' ,'password' , 
+            'rePassword' ]);
 
   const nextStepEventHandler = () => {
     if(steps== 1 ){
       setSteps(steps + 1);
     }else if(steps==2){
-      Swal.fire({
-        title: 'Form Gönderiliyor',
-        text: "Vermiş olduğunuz bilgilerin doğruluğunu onaylıyor musunuz ?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Onaylıyorum',
-        cancelButtonText: "Vazgeç"
-      }).then((result) => {
-        if (result.value) {
-          Swal.fire( {
-           confirmButtonText:"Tamam",
-            title :"Form Gönderildi",
-            icon:"success"
-          }
-           
-          )
+      if(Object.keys(errors).length > 0){
+        let errText = () => {
+         return  Object.values(errors).map(err => {
+          
+            return `<li>${err}</li>`;
+         
+          })
         }
-      });
+        console.log(errText())
+       
+        Swal.fire({
+        
+          icon: 'error',
+          confirmButtonColor: '#ff385c ',
+          confirmButtonText: 'Düzenle',
+          html: `<ul style="text-align:initial"> ${errText().join('<br/>')}</ul>`
+        });
+        return;
+      }else{
+
+        Swal.fire({
+          title: 'Form Gönderiliyor',
+          text: "Vermiş olduğunuz bilgilerin doğruluğunu onaylıyor musunuz ?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#ff385c',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: 'Onaylıyorum',
+          cancelButtonText: "Vazgeç"
+        }).then((result) => {
+    
+          if (result.value) {
+            api.post('/users', formData)
+            .then(function (response) {
+              console.log(response);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+            Swal.fire( {
+             confirmButtonText:"Tamam",
+             confirmButtonColor:"#ff385c",
+              title :"Form Gönderildi",
+              icon:"success"
+            }
+             
+            )
+          }
+        });
+      }
+     
     }
   };
   const previousButtonEventHandler = () => {
     if (steps > 1) {
       setSteps(steps - 1);
+      setFormData({})
     }
   };
 
   const submitRegisterFormEventHandler = (e) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    console.log(formData);
+/*
+   if(formData.password && formData.rePassword && !(formData.rePassword === formData.password)){
+      console.log("şifreler aynı değil")
+   }
+   */
   };
 
   let renderingFormStep = () => {
@@ -70,6 +111,8 @@ function RegisterContainer() {
     return null;
   };
 
+  
+
   return (
     <React.Fragment>
       <div
@@ -78,6 +121,7 @@ function RegisterContainer() {
           borderStyle: "groove",
           borderRadius: "10px",
           borderColor: "#cfcfe5",
+          minHeight:"638px"
         }}
       >
         <section
@@ -106,9 +150,7 @@ function RegisterContainer() {
 
                 <Button
                   onClick={nextStepEventHandler}
-                  style={{
-                    background: "#04AA6D",
-                  }}
+                 className={"btn-pink"}
                 >
                 {
                   (steps == 1) ? "Sonraki" : "Gönder"

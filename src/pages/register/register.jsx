@@ -3,7 +3,10 @@ import Header from '../../components/header/header';
 import RegisterContainer from '../../components/registerForm/RegisterContainer';
 import  "./register.css"
 
+
 function Register(props) {
+
+ 
     return (
         <div>
           <section>

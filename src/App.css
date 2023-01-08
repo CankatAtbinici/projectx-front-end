@@ -93,8 +93,8 @@ form .form-group input:focus {
   align-items: center;
 }
 .btn-pink{
-  background-color: #ff385b;
-  color: white;
+  background-color: #ff385b !important;
+  color: white !important;
   
 }
 .header-middle-side{
@@ -176,4 +176,16 @@ form .form-group input:focus {
 }
 .user-card-footer-show-profile{
   margin: 0px 10px 5px 0px;
+}
+
+.login-form-container{
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.login-form-parent{
+  display: flex;
+  justify-content: center;
+  padding-top: 12%;
 }
