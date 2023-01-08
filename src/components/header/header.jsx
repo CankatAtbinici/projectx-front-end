@@ -11,6 +11,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import autodraw from "./autodraw.png"; 
 
 function Header(props) {
 
@@ -27,7 +28,7 @@ function Header(props) {
         <div className="row header-row">
           <div className="col-4 header-left-side">
             <img
-              src=""
+              src={autodraw}
               alt=""
               style={{
                 height: "50px",
