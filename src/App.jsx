@@ -11,14 +11,16 @@ import {
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Settings from "./pages/settings/Settings";
-import Register from "./pages/register/register";
+import Register from "./pages/register/Register";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import TopBar from "./components/top-bar/Top-Bar";
 import Login from "./pages/login/Login";
 import ModalContext from "./context/context";
 import AboutUs from "./pages/about-us/AboutUs";
-import UniqRoom from "./pages/uniq_room/UniqRoom";
+
+//Import ProtectedRoutes
+import ProtectedRoutes from "./auth/ProtectedRoutes";
 
 function App() {
   return (
@@ -27,12 +29,15 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/settings" element={<Settings />} />
+
             <Route path="about-us" element={<AboutUs />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/uniqroom" element={<UniqRoom />} />
+
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/profile/settings" element={<Settings />} />
+              <Route path="/profile" element={<Profile />} />
+            </Route>
           </Routes>
         </BrowserRouter>
         <Footer />
