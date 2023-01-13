@@ -1,7 +1,6 @@
 import React ,{ useContext, useEffect } from "react";
 import UserCard from "../../components/user-cards/UserCard";
 import LoadingSpinner from "../loading-spinners/LoadingSpinner"
-import ModalContext from "../../context/context"
 import { Context } from "../../context/context";
 
 function Content(props) {
@@ -20,13 +19,13 @@ function Content(props) {
     <div>
       
     <div className="row landing-page-content-parent">
-      <div className="col-md-4 col-sm-6">
+      <div className="col-lg-4 col-md-6 col-12 pt-4 pb-4 content-user-card-container">
         <UserCard />
       </div>
-      <div className="col-md-4 col-sm-6">
+      <div className="col-lg-4 col-md-6 col-12 pt-4 pb-4 content-user-card-container">
         <UserCard />
       </div>
-      <div className="col-md-4 col-sm-6">
+      <div className="col-lg-4 col-md-6 col-12 pt-4 pb-4 content-user-card-container">
         <UserCard />
       </div>
     </div>

@@ -1,14 +1,13 @@
 import React from 'react';
-import UserCardTitle from "./UserCardTitle";
-import USerCardBody from "./UserCardBody";
 import UserCardFooter from "./UserCardFooter"
 import UserCardBody from './UserCardBody';
 
 function UserCard(props) {
     return (
         <div style={{
-            borderStyle:"groove",
-            width: "95%"
+            boxShadow: "rgb(10 0 0 / 55%) 2px 1px",
+            width: "95%",
+            
         }}>
             <section>
                 

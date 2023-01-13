@@ -170,6 +170,7 @@ form .form-group input:focus {
   flex-direction: row;
   margin-bottom: 0;
   width: 90%;
+  inline-size: max-content;
 }
 .user-card-footer-list div{
   display: flex;
@@ -183,6 +184,11 @@ form .form-group input:focus {
 }
 .user-card-footer-show-profile{
   margin: 0px 10px 5px 0px;
+}
+
+.content-user-card-container{
+justify-content: center;
+display: flex;
 }
 
 .login-form-container{
