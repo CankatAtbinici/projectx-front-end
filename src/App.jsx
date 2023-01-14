@@ -11,7 +11,7 @@ import {
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Settings from "./pages/settings/Settings";
-import Register from "./pages/register/register";
+import Register from "./pages/register/Register";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import TopBar from "./components/top-bar/Top-Bar";
