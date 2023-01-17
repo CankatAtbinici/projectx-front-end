@@ -19,13 +19,13 @@ function Content(props) {
     <div>
       
     <div className="row landing-page-content-parent">
-      <div className="col-lg-4 col-md-6 col-12 pt-4 pb-4 content-user-card-container">
+      <div className=" col-auto pt-4 pb-4 content-user-card-container">
         <UserCard />
       </div>
-      <div className="col-lg-4 col-md-6 col-12 pt-4 pb-4 content-user-card-container">
+      <div className=" col-auto pt-4 pb-4 content-user-card-container">
         <UserCard />
       </div>
-      <div className="col-lg-4 col-md-6 col-12 pt-4 pb-4 content-user-card-container">
+      <div className="col-auto pt-4 pb-4 content-user-card-container">
         <UserCard />
       </div>
     </div>

@@ -4,11 +4,11 @@ import UserCardBody from "./UserCardBody";
 
 function UserCard(props) {
   return (
-    <div
+    <div 
       style={{
         boxShadow: "5px 5px 15px #e7eaed",
         borderRadius: "8px",
-        width: "95%",
+        minWidth: "460px",
       }}
     >
       <section>

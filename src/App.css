@@ -97,9 +97,7 @@ form .form-group input:focus {
   color: white !important;
   
 }
-.header-middle-side{
 
-}
 .loading-spinner-parent{
   display: flex;
   justify-content: center;
@@ -142,6 +140,7 @@ form .form-group input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 102px;
 }
 
 .user-card-body-right{
