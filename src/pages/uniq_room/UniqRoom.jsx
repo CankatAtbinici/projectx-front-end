@@ -8,7 +8,7 @@ const UniqRoom = () => {
         <div className="row">
           <div className="col-sm-12">
             <div className="copy">
-              Send your URL to a friend to start a video call
+              {/*Send your URL to a friend to start a video call*/}
             </div>
           </div>
         </div>

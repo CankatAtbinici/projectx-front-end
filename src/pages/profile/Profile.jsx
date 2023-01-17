@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getAccessToken } from "../../auth/auth.service";
 import { v4 as uuidv4 } from "uuid";
 import UniqRoom from "../uniq_room/UniqRoom";
+import Header from "../../components/header/header"
 
 const Profile = React.memo((props) => {
   const [user, setUser] = useState([]);
@@ -33,14 +34,33 @@ const Profile = React.memo((props) => {
     </button>
   );
 
+  const testProfileData = () => {
+    return (
+      user? 
+      <ul>
+        <li><span>isim : </span>{user.name}</li>
+        <li><span>Soy isim :</span>{user.surname}</li>
+        <li><span>email : </span>{user.email}</li>
+        <li><span>Telefon : </span>{user.phone}</li>
+        <li><span>Kredi : </span>{user.credit}</li>
+      </ul> :
+      <div>
+        "adını bilemedim valla ama hoşgeldin"
+      </div>
+
+    );
+  }
+
   return (
     <div>
-      {user.name
-        ? user.name + " " + "Hoşgeldin paşam"
-        : "adını bilemedim valla ama hoşgeldin"}
+      <Header/>
+
+
+      {testProfileData()}
+
+
       <a href="/profile/settings">settings</a>
       {chatButton}
-
       <UniqRoom />
     </div>
   );

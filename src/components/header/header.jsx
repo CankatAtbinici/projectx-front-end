@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Input } from "reactstrap";
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { getAccessToken } from "../../auth/auth.service";
 import { clearAuthTokens } from "../../auth";
@@ -13,11 +13,10 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import autodraw from "./autodraw.png"; 
+import autodraw from "./autodraw.png";
 
 function Header(props) {
-
-    library.add(faBars);
+  library.add(faBars);
   // states
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -25,27 +24,37 @@ function Header(props) {
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const logAuth = () => {
-      clearAuthTokens()
-      window.location.pathname ="/"
-  }
+    clearAuthTokens();
+    window.location.pathname = "/";
+  };
 
   const isUserHasTokenShowLogAuthRoute = () => {
-      return (
-        getAccessToken() === null ?
-        <DropdownItem> <Link to= "/login"  style={{ textDecoration :"none " , color:"black"}} > Giriş Yap </Link></DropdownItem>:
-        <DropdownItem 
-          onClick={logAuth}
-        >  Çıkış yap </DropdownItem>
-      );
-  }
+    return getAccessToken() === null ? (
+      <DropdownItem>
+        <Link to="/login" style={{ textDecoration: "none ", color: "black" }}>
+          Giriş Yap
+        </Link>
+      </DropdownItem>
+    ) : (
+      <DropdownItem onClick={logAuth}> Çıkış yap </DropdownItem>
+    );
+  };
 
   const isUserHasTokenDontShowRegisterRoute = () => {
-    return (
-      getAccessToken() === null ?  
-      <DropdownItem> <Link to= "/register"  style={{ textDecoration :"none " , color:"black"}} >Kayıt Ol</Link> </DropdownItem>:
+    return getAccessToken() === null ? (
+      <DropdownItem>
+        {" "}
+        <Link
+          to="/register"
+          style={{ textDecoration: "none ", color: "black" }}
+        >
+          Kayıt Ol
+        </Link>{" "}
+      </DropdownItem>
+    ) : (
       ""
     );
-  }
+  };
 
   return (
     <div>
@@ -76,13 +85,38 @@ function Header(props) {
           <div className="col-4 header-right-side">
             <div className="header-user-right-bar">
               <div className="d-flex header-user-right-bar-dropdown-field">
-                <Dropdown isOpen={dropdownOpen} toggle={toggle} >
-                  <DropdownToggle caret  className="header-user-right-bar-dropdown-field-dropdown-toggle"> <FontAwesomeIcon icon={faBars} /> <FontAwesomeIcon icon={faUser} /></DropdownToggle>
+                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                  <DropdownToggle
+                    caret
+                    className="header-user-right-bar-dropdown-field-dropdown-toggle"
+                  >
+                    {" "}
+                    <FontAwesomeIcon icon={faBars} />{" "}
+                    <FontAwesomeIcon icon={faUser} />
+                  </DropdownToggle>
                   <DropdownMenu>
                     {isUserHasTokenDontShowRegisterRoute()}
                     {isUserHasTokenShowLogAuthRoute()}
-                    <DropdownItem> <Link to= "/about-us"  style={{ textDecoration :"none " , color:"black"}} > Projectx Nedir? </Link></DropdownItem>
-                    <DropdownItem> <Link to= "/"  style={{ textDecoration :"none " , color:"black"}} > Anasayfa </Link></DropdownItem>
+                    <DropdownItem>
+                      {" "}
+                      <Link
+                        to="/about-us"
+                        style={{ textDecoration: "none ", color: "black" }}
+                      >
+                        {" "}
+                        Projectx Nedir?{" "}
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      {" "}
+                      <Link
+                        to="/"
+                        style={{ textDecoration: "none ", color: "black" }}
+                      >
+                        {" "}
+                        Anasayfa{" "}
+                      </Link>
+                    </DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
               </div>
