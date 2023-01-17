@@ -5,6 +5,8 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from "react-router-dom";
+import { getAccessToken } from "../../auth/auth.service";
+import { clearAuthTokens } from "../../auth";
 import {
   Dropdown,
   DropdownToggle,
@@ -21,6 +23,29 @@ function Header(props) {
 
   //functions
   const toggle = () => setDropdownOpen((prevState) => !prevState);
+
+  const logAuth = () => {
+      clearAuthTokens()
+      window.location.pathname ="/"
+  }
+
+  const isUserHasTokenShowLogAuthRoute = () => {
+      return (
+        getAccessToken() === null ?
+        <DropdownItem> <Link to= "/login"  style={{ textDecoration :"none " , color:"black"}} > Giriş Yap </Link></DropdownItem>:
+        <DropdownItem 
+          onClick={logAuth}
+        >  Çıkış yap </DropdownItem>
+      );
+  }
+
+  const isUserHasTokenDontShowRegisterRoute = () => {
+    return (
+      getAccessToken() === null ?  
+      <DropdownItem> <Link to= "/register"  style={{ textDecoration :"none " , color:"black"}} >Kayıt Ol</Link> </DropdownItem>:
+      ""
+    );
+  }
 
   return (
     <div>
@@ -54,8 +79,8 @@ function Header(props) {
                 <Dropdown isOpen={dropdownOpen} toggle={toggle} >
                   <DropdownToggle caret  className="header-user-right-bar-dropdown-field-dropdown-toggle"> <FontAwesomeIcon icon={faBars} /> <FontAwesomeIcon icon={faUser} /></DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem> <Link to= "/register"  style={{ textDecoration :"none " , color:"black"}} >Kayıt Ol</Link> </DropdownItem>
-                    <DropdownItem> <Link to= "/login"  style={{ textDecoration :"none " , color:"black"}} > Giriş Yap </Link></DropdownItem>
+                    {isUserHasTokenDontShowRegisterRoute()}
+                    {isUserHasTokenShowLogAuthRoute()}
                     <DropdownItem> <Link to= "/about-us"  style={{ textDecoration :"none " , color:"black"}} > Projectx Nedir? </Link></DropdownItem>
                     <DropdownItem> <Link to= "/"  style={{ textDecoration :"none " , color:"black"}} > Anasayfa </Link></DropdownItem>
                   </DropdownMenu>
