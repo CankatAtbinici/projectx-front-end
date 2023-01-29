@@ -3,6 +3,8 @@ import UserCardFooter from "./UserCardFooter";
 import UserCardBody from "./UserCardBody";
 
 function UserCard(props) {
+  const {userId , userName, userSurname, comments , rates } = props;
+
   return (
     <div 
       style={{
@@ -12,7 +14,13 @@ function UserCard(props) {
       }}
     >
       <section>
-        <UserCardBody />
+        <UserCardBody
+        userId={userId}
+        userName = {userName}
+        userSurname = {userSurname}
+        comments = {comments}
+        rates = {rates}
+        />
         <UserCardFooter />
       </section>
     </div>
