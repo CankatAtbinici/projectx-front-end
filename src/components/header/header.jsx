@@ -55,6 +55,23 @@ function Header(props) {
       ""
     );
   };
+  const isUserHasTokenShowProfileRoute = () => {
+  
+    return getAccessToken() !== null &&
+    window.location.pathname !== '/profile' ?  (
+      <DropdownItem>
+        {" "}
+        <Link
+          to="/profile"
+          style={{ textDecoration: "none ", color: "black" }}
+        >
+          Kullanıcı Hesabım
+        </Link>{" "}
+      </DropdownItem>
+    ) : (
+      ""
+    );
+  };
 
   return (
     <div>
@@ -117,6 +134,8 @@ function Header(props) {
                         Anasayfa{" "}
                       </Link>
                     </DropdownItem>
+
+                    { isUserHasTokenShowProfileRoute()}
                   </DropdownMenu>
                 </Dropdown>
               </div>

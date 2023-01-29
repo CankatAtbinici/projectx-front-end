@@ -4,6 +4,7 @@ import axios, { formToJSON } from "axios"
 import Header from '../../components/header/header';
 import LoginModal from '../../components/log-in/LoginModal';
 import { setAccessToken } from '../../auth/auth.service';
+import Swal from 'sweetalert2';
 
 
 function Login(props) {
@@ -26,13 +27,17 @@ function Login(props) {
             const token = response.data.token;
             setAccessToken(token)
             window.location.href = "/profile"
-          } else {
-            console.log("giriş başarısız ")
-          
           }
         })
         .catch((error) => {
             console.log("işlem catch bloğuna düştü")
+            Swal.fire({
+              title: "İşlem başarısız",
+              text: "Kullanıcı adı veya şifre hatalı",
+              icon: "error",
+              confirmButtonText: "Tamam",
+              confirmButtonColor: "#ff385b"
+            })
          
         });
         

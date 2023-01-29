@@ -1,12 +1,16 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useContext} from "react";
 import { getAccessToken } from "../../auth/auth.service";
 import { v4 as uuidv4 } from "uuid";
 import UniqRoom from "../uniq_room/UniqRoom";
 import Header from "../../components/header/header"
+import ProfileContainer from "../../components/profile/ProfileContainer";
+import { Context } from "../../context/context";
+import LoadingSpinner from "../../components/loading-spinners/LoadingSpinner"
 
 const Profile = React.memo((props) => {
-  const [user, setUser] = useState([]);
+  const context = useContext(Context)
+
 
   useEffect(() => {
     const token = getAccessToken();
@@ -17,7 +21,7 @@ const Profile = React.memo((props) => {
         },
       })
       .then((response) => {
-        setUser(response.data);
+        context.setUserProfileData(response.data)
       })
       .catch((e) => {
         console.log(e);
@@ -36,32 +40,20 @@ const Profile = React.memo((props) => {
 
   const testProfileData = () => {
     return (
-      user? 
-      <ul>
-        <li><span>isim : </span>{user.name}</li>
-        <li><span>Soy isim :</span>{user.surname}</li>
-        <li><span>email : </span>{user.email}</li>
-        <li><span>Telefon : </span>{user.phone}</li>
-        <li><span>Kredi : </span>{user.credit}</li>
-      </ul> :
+      context.userProfileData !== false ? 
+          <ProfileContainer/>
+           :
       <div>
-        "adını bilemedim valla ama hoşgeldin"
+        <LoadingSpinner/>
       </div>
-
     );
   }
 
   return (
     <div>
       <Header/>
-
-
       {testProfileData()}
-
-
-      <a href="/profile/settings">settings</a>
-      {chatButton}
-      <UniqRoom />
+   
     </div>
   );
 });
