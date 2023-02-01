@@ -6,10 +6,14 @@ function UserCard(props) {
   const {userId , userName, userSurname, comments , rates } = props;
 
   return (
-    <div 
+  <div className="user-card-outer-container">
+      <div 
       style={{
         boxShadow: "5px 5px 15px #e7eaed",
         borderRadius: "8px",
+        width:"100%",
+        height:"100%",
+
         // minWidth: "460px",
       }}
     >
@@ -24,6 +28,7 @@ function UserCard(props) {
         <UserCardFooter />
       </section>
     </div>
+  </div>
   );
 }
 

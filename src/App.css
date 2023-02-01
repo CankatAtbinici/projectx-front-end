@@ -148,7 +148,7 @@ form .form-group input:focus {
 
 .user-card-body-left img{
   border-radius: 50%;
-  width: 70%;
+  width: 100px;
   display: flex;
 
 }
@@ -169,6 +169,7 @@ form .form-group input:focus {
   margin-bottom: 0;
   width: 90%;
   inline-size: max-content;
+  align-self: center;
 }
 .user-card-footer-list div{
   display: flex;
@@ -203,4 +204,9 @@ justify-content: space-between;
 }
 .add-pointer{
   cursor: pointer;
+}
+.user-card-outer-container{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
 }
