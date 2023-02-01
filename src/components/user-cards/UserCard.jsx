@@ -10,7 +10,7 @@ function UserCard(props) {
       style={{
         boxShadow: "5px 5px 15px #e7eaed",
         borderRadius: "8px",
-        minWidth: "460px",
+        // minWidth: "460px",
       }}
     >
       <section>

@@ -22,7 +22,7 @@ function Content(props) {
    return (
     Object.values(context.allUserLandingPageData).map(userData => {
       return (
-        <div className=" col-auto pt-4 pb-4 content-user-card-container"
+        <div className="col-md-6 col-sm-12 col-lg-4 pt-4 pb-4 content-user-card-container"
         key={userData.id}>
         <UserCard
           userId = {userData.id}
@@ -43,8 +43,12 @@ function Content(props) {
     (context.allUserLandingPageData === false)  ? <LoadingSpinner/>:
     <div>
       
-    <div className="row landing-page-content-parent">
+    <div className=" col-12 landing-page-content-parent">
+      <div className="row">
       {setUserCards()}
+
+      </div>
+ 
     </div>
   </div>
    

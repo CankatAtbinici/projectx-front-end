@@ -66,7 +66,7 @@ function UserCardBody(props) {
             >
               {" "}
               Değerlendirme:
-              <span>{comments.length} </span> <span>yorum</span>
+              <span>{comments?.length} </span> <span>yorum</span>
             </div>
           </ul>
         </div>
