@@ -8,7 +8,6 @@ function Home(props) {
     
     return (
         <div>
-            
             <Header/>
             <TopBar/>
             <Content/>

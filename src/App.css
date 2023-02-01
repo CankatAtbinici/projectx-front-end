@@ -201,3 +201,6 @@ display: flex;
   justify-content: center;
   padding-top: 12%;
 }
+.add-pointer{
+  cursor: pointer;
+}

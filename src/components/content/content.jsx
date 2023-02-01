@@ -18,11 +18,7 @@ function Content(props) {
         console.log(e);
       });
     } , [])
-
-    console.log(context.allUserLandingPageData)
-
     const setUserCards = () => {
-      console.log(context.allUserLandingPageData)
    return (
     Object.values(context.allUserLandingPageData).map(userData => {
       return (
