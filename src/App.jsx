@@ -33,7 +33,7 @@ function App() {
             <Route path="about-us" element={<AboutUs />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-
+            <Route path="/profiles/:id" element={<Profile />} />
             <Route element={<ProtectedRoutes />}>
               <Route path="/profile/settings" element={<Settings />} />
               <Route path="/profile" element={<Profile />} />

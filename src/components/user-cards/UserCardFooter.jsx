@@ -1,6 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function UserCardFooter(props) {
+    const {userId} = props;
+    const dinamicPath = "/profiles/"+ userId
+    console.log(userId)
     return (
         <div style={{
             display:"flex",
@@ -11,7 +15,7 @@ function UserCardFooter(props) {
             <div className='user-card-footer-list'>
                 <div> <span  className="user-card-footer-badge">Balıkçılık</span></div>
                 <div > <span className="user-card-footer-badge">Ev hayvanları</span></div>
-                <div > <span className="user-card-footer-badge">Fitness</span></div>
+                <div > <span className="user-card-footer-badge">Fitness</span></div> 
             </div>
             <div style={{
                 display:"flex",
@@ -19,7 +23,7 @@ function UserCardFooter(props) {
                 padding: 0,
                 margin: 0,
             }}>
-                <a className='user-card-footer-show-profile' href=""> Profili gör - </a>
+                <Link className='user-card-footer-show-profile' to={dinamicPath}> Profili gör - </Link>
             </div>
         </div>
     );

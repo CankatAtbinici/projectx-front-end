@@ -150,6 +150,9 @@ form .form-group input:focus {
   border-radius: 50%;
   width: 100px;
   display: flex;
+  object-fit: cover;
+  outline-style: double;
+  margin-block: auto;
 
 }
 .user-card-footer-badge{

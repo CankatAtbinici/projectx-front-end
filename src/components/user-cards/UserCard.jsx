@@ -25,7 +25,9 @@ function UserCard(props) {
         comments = {comments}
         rates = {rates}
         />
-        <UserCardFooter />
+        <UserCardFooter
+         userId={userId}
+        />
       </section>
     </div>
   </div>

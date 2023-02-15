@@ -5,9 +5,7 @@ import UserProfileCard from './UserProfileCard';
 
 
 function ProfileContainer(props) {
-
     const context = useContext(Context)
-
 
     return (
         <div>

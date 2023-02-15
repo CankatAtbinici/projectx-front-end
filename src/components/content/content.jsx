@@ -23,7 +23,8 @@ function Content(props) {
     Object.values(context.allUserLandingPageData).map(userData => {
       return (
         <div className="col-md-6 col-sm-12 col-lg-4 content-user-card-container"
-        key={userData.id}>
+        key={userData.id}
+        >
         <UserCard
           userId = {userData.id}
           userName = {userData.name}
