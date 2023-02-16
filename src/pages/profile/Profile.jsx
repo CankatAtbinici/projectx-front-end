@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./Profile.css"
 import React, { useEffect, useState , useContext} from "react";
 import { getAccessToken } from "../../auth/auth.service";
 import { v4 as uuidv4 } from "uuid";
@@ -77,7 +78,7 @@ const Profile = React.memo((props) => {
 
   return (
     <div>
-      <Header/>
+     
       {testProfileData()}
    
     </div>

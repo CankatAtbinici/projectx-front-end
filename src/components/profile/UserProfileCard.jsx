@@ -6,7 +6,11 @@ function UserProfileCard(props) {
     const context = useContext(Context)
     return (
         <div>
-
+            
+            <div>
+            Burası User Profil Card Componentidir
+            </div>
+            
         {context.userProfileData.name}
         
 
