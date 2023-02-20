@@ -78,7 +78,7 @@ const Profile = React.memo((props) => {
 
   return (
     <div>
-     
+      <Header/>
       {testProfileData()}
    
     </div>

@@ -10,8 +10,7 @@ function ProfileContainer(props) {
     const context = useContext(Context)
 
     return (
-        <div>
-            <Header/>
+        <div className='user-profile-container'>
             <UserProfileCard/>
             <div>
                 <ShowUserProfile/>

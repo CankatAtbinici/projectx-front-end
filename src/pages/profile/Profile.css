@@ -1,6 +1,77 @@
-.user-info-card-main-container{
-display: flex;
-width: 100%;
-background-color: yellow;
+.user-info-card-main-container {
+  display: flex;
+  width: 100%;
+  background-color: yellow;
 }
 
+.user-profile-container {
+  background-color: red;
+  margin-top: 3em;
+}
+.user-profile-card-container {
+  background-color: white;
+  border-radius: 10px;
+  min-height: 500px;
+  min-height: 500px;
+}
+.user-profile-card-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.user-profile-card-picture-container {
+  display: flex;
+  justify-content: center;
+  object-fit: cover;
+  padding-top: 20px;
+}
+
+.user-profile-card-image-area {
+  width: 30%;
+  border-radius: 30%;
+  border-style: double;
+}
+.user-profile-card-vertical-middle {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-profile-card-name-section {
+  font-weight: 900;
+  font-size: larger;
+}
+.user-profile-card-user-title-section {
+}
+.user-profile-card-vertical-bottom {
+  display: flex;
+  flex-direction: column;
+}
+.user-profile-card-bottom-list-element {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.user-profile-card-bottom-list-element-icon-container {
+  justify-content: center;
+  display: flex;
+}
+.user-profile-card-bottom-list-element-key-container {
+  justify-content: flex-start;
+  display: flex;
+}
+
+.user-profile-card-bottom-list-element-value-container {
+  display: flex;
+  justify-content: center;
+}
+.user-profile-card-bottom-list-element-icon-area {
+  display: flex;
+}
+.user-profile-card-bottom-list-element-key-area {
+  display: flex;
+}
+.user-profile-card-bottom-list-element-value-area {
+  display: flex;
+}
