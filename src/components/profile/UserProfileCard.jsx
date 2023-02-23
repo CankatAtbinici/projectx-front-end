@@ -37,12 +37,12 @@ function UserProfileCard(props) {
                             </div>
                             <div className='user-profile-card-bottom-list-element-key-container col-5'>
                             <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    key
+                                    Kayıt Tarihi
                             </span>
                             </div>
                             <div className='user-profile-card-bottom-list-element-value-container col-5'>
                             <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    değer
+                                    19-02-2023
                             </span>
                             </div>
 
@@ -55,12 +55,12 @@ function UserProfileCard(props) {
                             </div>
                             <div className='user-profile-card-bottom-list-element-key-container col-5'>
                             <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    key
+                                    Son Görülme
                             </span>
                             </div>
                             <div className='user-profile-card-bottom-list-element-value-container col-5'>
                             <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    değer
+                                    1 Saat önce
                             </span>
                             </div>
 
@@ -72,12 +72,12 @@ function UserProfileCard(props) {
                             </div>
                             <div className='user-profile-card-bottom-list-element-key-container col-5'>
                             <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    key
+                                    Toplam Görüşme Süresi
                             </span>
                             </div>
                             <div className='user-profile-card-bottom-list-element-value-container col-5'>
                             <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    değer
+                                    26 saat
                             </span>
                             </div>
 
