@@ -47,6 +47,10 @@ form {
   background-color: white;
 }
 
+input[type=checkbox]:checked{
+  background-color: #ff385b !important;
+}
+
 form .form-group {
   background-color: white;
   color: black;
@@ -213,3 +217,61 @@ justify-content: space-between;
   height: 100%;
   padding: 10px;
 }
+
+.box-border-radius-top{
+  background-color: #ff385c;
+  border-radius: 15px 50px 30px 5px
+}
+.box-border-radius-bottom{
+  background-color: #ff385c;
+  border-radius: 15px 30px 50px 5px;
+}
+
+.box-shadow{
+  box-shadow: rgb(231 234 237) 5px 5px 15px;
+}
+.flex-end{
+  justify-content: flex-end;
+  display: flex;
+}
+
+.react-datepicker__header--time{
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  background: pink;
+  align-items: center;
+  background: linear-gradient(45deg, #bf7d7d, transparent);
+}
+.react-datepicker-time__header{
+  color: white !important;
+}
+.react-datepicker{
+  border-radius: 10px !important;
+
+}
+
+.react-datepicker__current-month{
+  color:white !important;
+}
+.react-datepicker__header--has-time-select{
+  background: linear-gradient(45deg, #bf7d7d, transparent);
+}
+.react-datepicker__day--selected{
+  background-color: #ff385c !important;
+}
+.react-datepicker__day-name{
+  color:white !important;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item--selected{
+  background-color: #ff385c !important;
+}
+.react-datepicker__day-names{
+  background: black;
+}
+.react-datepicker__input-container{
+  box-shadow: rgb(231 234 237) 5px 5px 15px;
+
+}
+

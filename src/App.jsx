@@ -1,5 +1,4 @@
 import "./App.css";
-import RegisterContainer from "./components/registerForm/RegisterContainer";
 import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
@@ -12,12 +11,13 @@ import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Settings from "./pages/settings/Settings";
 import Register from "./pages/register/register";
-import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
-import TopBar from "./components/top-bar/Top-Bar";
 import Login from "./pages/login/Login";
 import ModalContext from "./context/context";
 import AboutUs from "./pages/about-us/AboutUs";
+import "react-datepicker/dist/react-datepicker.css";
+
+
 
 //Import ProtectedRoutes
 import ProtectedRoutes from "./auth/ProtectedRoutes";

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Context } from '../../context/context';
 import { useContext } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDays , faEye, faHandshake} from '@fortawesome/free-solid-svg-icons'
+
 
 function UserProfileCard(props) {
     const context = useContext(Context)
     return (
-        <div className='user-profile-card-container col-12 col-md-4'>
-            
+        <div className='user-profile-card-container'>
             <div className='user-profile-card-vertical-group'>
 
                 <section className='user-profile-card-vertical-top'>
@@ -32,7 +34,7 @@ function UserProfileCard(props) {
                     <div className='user-profile-card-bottom-list-element row m-0'> 
                             <div className='user-profile-card-bottom-list-element-icon-container col-2'>
                                 <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    icon
+                                <FontAwesomeIcon icon={faCalendarDays} />
                                 </span>
                             </div>
                             <div className='user-profile-card-bottom-list-element-key-container col-5'>
@@ -50,7 +52,7 @@ function UserProfileCard(props) {
                     <div className='user-profile-card-bottom-list-element row m-0'> 
                             <div className='user-profile-card-bottom-list-element-icon-container col-2'>
                                 <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    icon
+                                <FontAwesomeIcon icon={faEye} />
                                 </span>
                             </div>
                             <div className='user-profile-card-bottom-list-element-key-container col-5'>
@@ -67,7 +69,7 @@ function UserProfileCard(props) {
                     </div>  <div className='user-profile-card-bottom-list-element row m-0'> 
                             <div className='user-profile-card-bottom-list-element-icon-container col-2'>
                                 <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    icon
+                                <FontAwesomeIcon icon={faHandshake} />
                                 </span>
                             </div>
                             <div className='user-profile-card-bottom-list-element-key-container col-5'>
@@ -89,7 +91,7 @@ function UserProfileCard(props) {
                             </div>
                             <div className='user-profile-card-bottom-list-element-key-container col-5'>
                             <span className='user-profile-card-bottom-list-element-icon-area'>
-                                    key
+                                    
                             </span>
                             </div>
                             <div className='user-profile-card-bottom-list-element-value-container col-5'>
@@ -118,13 +120,7 @@ function UserProfileCard(props) {
                     </div>
 
                 </section>
-
-
-            </div>
-            
-        
-        
-
+            </div>          
         </div>
     );
 }  
