@@ -7,7 +7,7 @@ function LoginModal(props) {
     <div className="login-form-parent">
       <section className="login-form-container">
         <FormGroup>
-          <Label for="username-login">Kullanıcı e-posta </Label>
+          <Label htmlFor="username-login">Kullanıcı e-posta </Label>
           <Input
             type="text"
             name="email"
@@ -17,7 +17,7 @@ function LoginModal(props) {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="password-login">Parola</Label>
+          <Label htmlFor="password-login">Parola</Label>
           <Input
             type="password"
             name="password"

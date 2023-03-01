@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 function UserCardFooter(props) {
     const {userId} = props;
     const dinamicPath = "/profiles/"+ userId
-    console.log(userId)
     return (
         <div style={{
             display:"flex",

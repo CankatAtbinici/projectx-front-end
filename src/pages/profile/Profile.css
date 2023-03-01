@@ -37,6 +37,16 @@
   flex-direction: column;
   align-items: center;
 }
+.user-profile-card-vertical-middle-social-links-container{
+  display:flex;
+  justify-content: center;
+  width: 100%;
+}
+.user-profile-card-vertical-middle-social-links{
+display: flex;
+justify-content: space-between;
+width: 50%;
+}
 
 .user-profile-card-name-section {
   font-weight: 900;
@@ -82,7 +92,7 @@
 }
 .reservation-card-head{
   background: linear-gradient(315deg, #ff385c, transparent);
-  border-radius: 15px 50px 30px 5px
+  border-radius: 15px 8px 30px 5px
 }
 .reservation-card-head-title{
   color: white;
@@ -145,7 +155,7 @@
 
 .experience-showcase-head{
   background:  #ff385c;
-    border-radius: 15px 50px 30px 5px;
+    border-radius: 24px 8px 0px 4px;
 
 }
 .experience-showcase-body{
@@ -164,6 +174,7 @@
 width: 100%;
 display: flex;
 flex-direction: column;
+border-bottom-style: inset;
 }
 
 .comments-head-top-area{
@@ -203,11 +214,12 @@ justify-content: center;
   display: flex;
   width: 50%;
   flex-direction: column;
-
+  justify-content:center;
 }
 .comments-head-bottom-area-bottom{
   display: flex;
   align-items: center;
+  border-bottom-style: inset;
 }
 
 .comments-head-bottom-area-bottom-rate-star-icon{
@@ -323,7 +335,7 @@ align-items: center;
 }
 
 .comments-body-middle-title-username{
-
+font-weight: 500;
 }
 
 

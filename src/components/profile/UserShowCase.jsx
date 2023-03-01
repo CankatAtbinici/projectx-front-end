@@ -10,13 +10,13 @@ function UserShowCase(props) {
         </div>
         <div className="experience-showcase-body d-flex">
             <h4>
-              <span class="badge bg-secondary">Deneyim -1</span>
+              <span className="badge bg-secondary">Deneyim -1</span>
             </h4>
             <h4>
-              <span class="badge bg-secondary">Deneyim -1</span>
+              <span className="badge bg-secondary">Deneyim -1</span>
             </h4>
             <h4>
-              <span class="badge bg-secondary">Deneyim -1</span>
+              <span className="badge bg-secondary">Deneyim -1</span>
             </h4>
    
         </div>

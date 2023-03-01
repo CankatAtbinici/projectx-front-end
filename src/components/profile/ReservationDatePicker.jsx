@@ -18,23 +18,23 @@ function ReservationDatePicker(props) {
                 <div className="reservation-card-body-head">
                 <ReactDatePicker/>
                 <div className="reservation-card-experience-selection">
-                <div class="form-check reservation-card-experience-item">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /> 
-                    <label class="form-check-label" for="flexCheckDefault">
+                <div className="form-check reservation-card-experience-item">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" /> 
+                    <label className="form-check-label" htmlFor="flexCheckDefault">
                         Deneyim -1    
                     </label>
                 </div>
 
-                <div class="form-check  reservation-card-experience-item ">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/> 
-                    <label class="form-check-label" for="flexCheckDefault">
+                <div className="form-check  reservation-card-experience-item ">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/> 
+                    <label className="form-check-label" htmlFor="flexCheckDefault">
                     Deneyim -2    
                     </label>
                 </div>
 
-                <div class="form-check  reservation-card-experience-item">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/> 
-                    <label class="form-check-label" for="flexCheckDefault">
+                <div className="form-check  reservation-card-experience-item">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/> 
+                    <label className="form-check-label" htmlFor="flexCheckDefault">
                     Deneyim -3     
                     </label>
                 </div>

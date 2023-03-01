@@ -10,22 +10,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function ProfileContainer(props) {
   const context = useContext(Context);
 
+
+
   return (
     <div className="user-profile-container container-fluid">
       <div className="row">
-        <div className="col-md-5">
+        <div className="col-sm-12 col-md-5">
           <UserProfileCard />
         </div>
-        <div className="col-md-7">
+        <div className="col-sm-12 col-md-7">
           <ReservationDatePicker />
         </div>
 
         <div className="row py-4">
-          <div className="col-12 col-md-5">
+          <div className="col-sm-12 col-md-5">
             <UserShowCase />
           </div>
 
-          <div className="col-12 col-md-7">
+          <div className="col-sm-12 col-md-7">
             <section>
               <div className="comments-container box-shadow">
                 <div className="comments-head">
@@ -39,10 +41,10 @@ function ProfileContainer(props) {
                     <div className="comments-head-bottom-area-left">
                       <div className="comments-head-bottom-area-left-content-left">
                         <div className="comments-head-bottom-area-left-content-left-icon-area">
-                          <FontAwesomeIcon icon={faComments} />
+                          <FontAwesomeIcon size="2x" icon={faComments} />
                         </div>
                         <div className="comments-head-bottom-area-left-content-left-content-area">
-                          İletişim
+                          İyi iletişim
                         </div>
                         <div className="comments-head-bottom-area-left-content-left-rate-area">
                           Rate: 5.00
@@ -50,10 +52,10 @@ function ProfileContainer(props) {
                       </div>
                       <div className="comments-head-bottom-area-left-content-right">
                         <div className="comments-head-bottom-area-left-content-left-icon-area">
-                          <FontAwesomeIcon icon={faThumbsUp} />
+                          <FontAwesomeIcon size="2x" icon={faThumbsUp} style={{color:"#ff385c"}} />
                         </div>
                         <div className="comments-head-bottom-area-left-content-left-content-area">
-                          Bilgi
+                          Bilgili
                         </div>
                         <div className="comments-head-bottom-area-left-content-right-rate-area">
                           Rate: 5.00
@@ -62,9 +64,7 @@ function ProfileContainer(props) {
                     </div>
 
                     <div className="comments-head-bottom-area-right">
-                      <div className="comments-head-bottom-area-right-top flex-end px-3"> 25500 dk görüşme</div>
-                      <div className="comments-head-bottom-area-right-middle flex-end px-3">340 Değerlendirme</div>
-                      <div className="comments-head-bottom-area-bottom flex-end px-3"> 
+                    <div className="comments-head-bottom-area-bottom flex-end px-3"> 
                       <span className="comments-head-bottom-area-bottom-rate-content ">
                         5.00
                         </span>
@@ -72,10 +72,13 @@ function ProfileContainer(props) {
                           <FontAwesomeIcon icon={faStar}/>
                         </span>
                          </div>
+                      <div className="comments-head-bottom-area-right-top flex-end px-3"> 25500 dk görüşme</div>
+                      <div className="comments-head-bottom-area-right-middle flex-end px-3">340 Değerlendirme</div>
+        
                     </div>
                   </div>
                 </div>
-                <div className="comments-body">
+                <div className="comments-body py-3">
 
 
                   <div className="comments-body-left"> 
@@ -85,7 +88,7 @@ function ProfileContainer(props) {
                   </div>
                   <div className="comments-body-middle">
                     <div className="comments-body-middle-title">
-                    <div className="comments-body-middle-title-username" > Hamza Atmaca</div>
+                    <div className="comments-body-middle-title-username"  > Hamza Atmaca</div>
                     <div className="comments-body-middle-title-user-rate  px-4"> 5.00 <span> <FontAwesomeIcon  style={{color:"goldenrod"}}icon= {faStar}/> </span></div>
               
 
