@@ -32,14 +32,15 @@ import api from "./services/api";
 
 function App() {
 
-
-  const visitor = jwtDecode(getAccessToken()).sub 
-  let visitObject = {
-    visitor:visitor,
-    value:true
+  if(getAccessToken() !==null){
+    const visitor = jwtDecode(getAccessToken()).sub 
+    let visitObject = {
+      visitor:visitor,
+      value:true
+    }
+    api.post('/user/visitor', visitObject)
   }
-  api.post('/user/visitor', visitObject)
-    
+
   return (
     <ModalContext>
       <div style={{ width: "90%" }}>

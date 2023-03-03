@@ -36,8 +36,6 @@ const Profile = React.memo((props) => {
   }
 
   useEffect(() => {
-
-
     const token = getAccessToken();
     if(isUSerProfileOwner()){
       axios
@@ -58,7 +56,6 @@ const Profile = React.memo((props) => {
   
   }, []);
 
-  console.log(context.userProfileData)
   const setPathName = () => {
     window.location.pathname = uuidv4();
   };
@@ -72,7 +69,7 @@ const Profile = React.memo((props) => {
   const testProfileData = () => {
     return (
       context.userProfileData !== false 
-      ?  <ProfileContainer/> 
+      ?  <ProfileContainer isUSerProfileOwner = {isUSerProfileOwner}/> 
       :  <LoadingSpinner/>
     );
   }

@@ -274,4 +274,7 @@ justify-content: space-between;
   box-shadow: rgb(231 234 237) 5px 5px 15px;
 
 }
+.pointer{
+  cursor: pointer !important;
+}
 

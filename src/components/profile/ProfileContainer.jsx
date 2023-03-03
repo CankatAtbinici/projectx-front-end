@@ -4,11 +4,53 @@ import { Context } from "../../context/context";
 import UserProfileCard from "./UserProfileCard";
 import ReservationDatePicker from "./ReservationDatePicker";
 import UserShowCase from "./UserShowCase";
-import { faComments, faThumbsUp , faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ProfileComments from "./ProfileComments";
+
 
 function ProfileContainer(props) {
+  const{isUSerProfileOwner} =props;
   const context = useContext(Context);
+  const userProfileData = context.userProfileData; 
+
+
+    //USER AVARAGE RATE FORMATTER
+
+    const formattedAvarageRate = () =>{
+      if(userProfileData.user_rate && userProfileData.user_rate [0]){
+        const avarageRate = Number(userProfileData.user_rate[0].average_rate);
+        let formattedNum = avarageRate.toFixed(2);
+        return formattedNum;
+      }
+      return "Değerlendirme yok"
+    }
+
+    //LAST SEEN FORMATTER
+    const formatLastSeenDate = (lastSeenDate) => {
+      if(lastSeenDate === "Bilinmiyor") return 'Bilinmiyor';
+      const now = new Date();
+      const lastSeen = new Date(lastSeenDate);
+      const timeDiff = Math.floor((now - lastSeen) / 1000 / 60); // difference in minutes
+    
+      if (timeDiff < 2) {
+        return "Çevrimiçi";
+      } else if (timeDiff < 60) {
+        return ` ${timeDiff} dakika önce`;
+      } else if (timeDiff < 120) {
+        return " 1 saat önce";
+      } else if (timeDiff < 1440) {
+        return ` ${Math.floor(timeDiff / 60)} saat önce`;
+      } else {
+        const day = lastSeen.getDate() < 10 ? `0${lastSeen.getDate()}` : lastSeen.getDate();
+        const month = lastSeen.getMonth() < 9 ? `0${lastSeen.getMonth() + 1}` : lastSeen.getMonth() + 1;
+        const year = lastSeen.getFullYear();
+        const hours = lastSeen.getHours() < 10 ? `0${lastSeen.getHours()}` : lastSeen.getHours();
+        const minutes = lastSeen.getMinutes() < 10 ? `0${lastSeen.getMinutes()}` : lastSeen.getMinutes();
+    
+        return `Son görülme: ${day}.${month}.${year} ${hours}:${minutes}`;
+      }
+    }
+
+    //COMMENT DATE FORMATTER 
 
 
 
@@ -16,99 +58,42 @@ function ProfileContainer(props) {
     <div className="user-profile-container container-fluid">
       <div className="row">
         <div className="col-sm-12 col-md-5">
-          <UserProfileCard />
+          <UserProfileCard 
+            formatLastSeenDate = {formatLastSeenDate}
+          />
         </div>
-        <div className="col-sm-12 col-md-7">
+
+        {
+          userProfileData.status == 1 ?
+          <div className="col-sm-12 col-md-7">
           <ReservationDatePicker />
         </div>
+        :
+         <div className="col-sm-12 col-md-7">
+          {isUSerProfileOwner() ? 
+            <span><a href="" style={{color:"black" , textDecoration:"underline"}}> Nasıl Deneyimli Üye Olabilirim ?  </a></span>
+           :
+        <span> Kullanıcı Şimdilik deneyim vermeyi tercih etmemektedir </span>
+          
+          }
+       </div>
+        }
+        
 
         <div className="row py-4">
-          <div className="col-sm-12 col-md-5">
-            <UserShowCase />
-          </div>
+
+          {
+             userProfileData.status == 1 &&
+             <div className="col-sm-12 col-md-5">
+             <UserShowCase />
+           </div>
+          }
+     
 
           <div className="col-sm-12 col-md-7">
-            <section>
-              <div className="comments-container box-shadow">
-                <div className="comments-head">
-                  <div className="comments-head-top-area">
-                    <span className="comments-head-top-content p-3">
-                      TÜM DEĞERLENDİRMELER
-                    </span>
-                  </div>
-
-                  <div className="comments-head-bottom-area">
-                    <div className="comments-head-bottom-area-left">
-                      <div className="comments-head-bottom-area-left-content-left">
-                        <div className="comments-head-bottom-area-left-content-left-icon-area">
-                          <FontAwesomeIcon size="2x" icon={faComments} />
-                        </div>
-                        <div className="comments-head-bottom-area-left-content-left-content-area">
-                          İyi iletişim
-                        </div>
-                        <div className="comments-head-bottom-area-left-content-left-rate-area">
-                          Rate: 5.00
-                        </div>
-                      </div>
-                      <div className="comments-head-bottom-area-left-content-right">
-                        <div className="comments-head-bottom-area-left-content-left-icon-area">
-                          <FontAwesomeIcon size="2x" icon={faThumbsUp} style={{color:"#ff385c"}} />
-                        </div>
-                        <div className="comments-head-bottom-area-left-content-left-content-area">
-                          Bilgili
-                        </div>
-                        <div className="comments-head-bottom-area-left-content-right-rate-area">
-                          Rate: 5.00
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="comments-head-bottom-area-right">
-                    <div className="comments-head-bottom-area-bottom flex-end px-3"> 
-                      <span className="comments-head-bottom-area-bottom-rate-content ">
-                        5.00
-                        </span>
-                        <span className="comments-head-bottom-area-bottom-rate-star-icon">
-                          <FontAwesomeIcon icon={faStar}/>
-                        </span>
-                         </div>
-                      <div className="comments-head-bottom-area-right-top flex-end px-3"> 25500 dk görüşme</div>
-                      <div className="comments-head-bottom-area-right-middle flex-end px-3">340 Değerlendirme</div>
-        
-                    </div>
-                  </div>
-                </div>
-                <div className="comments-body py-3">
-
-
-                  <div className="comments-body-left"> 
-                    <span className="comments-body-left-image-area">
-                           <img src="https://cdn.armut.com/UserPics/tr:w-325,h-325/6248bb01-ab94-43f6-93c7-6bc5262875cf.jpeg" alt="Profile pic" className="comments-body-left-image-content" />
-                    </span>
-                  </div>
-                  <div className="comments-body-middle">
-                    <div className="comments-body-middle-title">
-                    <div className="comments-body-middle-title-username"  > Hamza Atmaca</div>
-                    <div className="comments-body-middle-title-user-rate  px-4"> 5.00 <span> <FontAwesomeIcon  style={{color:"goldenrod"}}icon= {faStar}/> </span></div>
-              
-
-                    </div>
-                    <div className="comments-body-middle-content"> Teşekkürler Cankat... Çok bilgili ve diksiyonu  çok iyi herkese tavsiye ederim kesinlikle</div>
-                  </div>
-                  <div className="comments-body-right">
-                      4 gün önce
-                  </div>
-                </div>
-
-                <div className="comments-footer">
-                  <div>
-                    <span className="comments-footer-content box-shadow">
-                      Daha fazla yorum göster
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </section>
+              <ProfileComments
+              formattedAvarageRate = {formattedAvarageRate}
+              />
           </div>
         </div>
       </div>
