@@ -10,7 +10,7 @@ import {
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Settings from "./pages/settings/Settings";
-import Register from "./pages/register/Register";
+import Register from "./pages/register/register";
 import Footer from "./components/footer/footer";
 import Login from "./pages/login/Login";
 import ModalContext from "./context/context";
