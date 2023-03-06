@@ -2,24 +2,35 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import tr from 'date-fns/locale/tr';
+import { subDays, addDays } from 'date-fns';
 
 
 
 function ReactDatePicker(props) {
     const [startDate, setStartDate] = useState(new Date());
     
-    //RESERVASYON OLAN TARİHLERİN SEÇİLMESİNİ ENGELLEMEK İÇİN BU PROPS KULLLANILABİLİR
-    const excludeTimes = [
-        new Date(2023, 1, 25, 12, 30), // 25 Şubat 2023, 12:30
-        new Date(2023, 1, 25, 13, 30), // 25 Şubat 2023, 13:30
-        new Date(2023, 1, 25, 14, 30), // 25 Şubat 2023, 14:30
-     
-      ];
+
+    
+
+    const freeDays = [2,5]
+    const includeDateIntervals = [{ start: addDays(new Date(), 1), end: addDays(new Date(),6) }];
+  const includeDates = () => {
+    const dates = [];
+    const startDate = new Date();
+    while (dates.length < 10) {
+      const day = startDate.getDay();
+      if (freeDays.includes(day)) {
+        dates.push(new Date(startDate.getTime()));
+      }
+      startDate.setDate(startDate.getDate() + 1);
+    }
+    return dates;
+  };
 
 
     return (
         <div>
-               <div className="date-picker-container">
+        <div className="date-picker-container">
       <DatePicker
         selected={startDate}
         onChange={(date) => setStartDate(date)}
@@ -29,7 +40,11 @@ function ReactDatePicker(props) {
         dateFormat="dd/MM/yyyy HH:mm"
         timeCaption="Saat"
         locale={tr}
-        excludeTimes = {excludeTimes}
+        includeDateIntervals={includeDateIntervals}
+        includeDates={includeDates()}
+
+
+
       />
     </div>
         </div>
