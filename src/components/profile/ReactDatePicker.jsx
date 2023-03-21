@@ -4,51 +4,82 @@ import "react-datepicker/dist/react-datepicker.css";
 import tr from 'date-fns/locale/tr';
 import { subDays, addDays } from 'date-fns';
 
-
-
 function ReactDatePicker(props) {
-    const [startDate, setStartDate] = useState(new Date());
-    
-
-    
-
-    const freeDays = [2,5]
-    const includeDateIntervals = [{ start: addDays(new Date(), 1), end: addDays(new Date(),6) }];
-  const includeDates = () => {
-    const dates = [];
-    const startDate = new Date();
-    while (dates.length < 10) {
-      const day = startDate.getDay();
-      if (freeDays.includes(day)) {
-        dates.push(new Date(startDate.getTime()));
-      }
-      startDate.setDate(startDate.getDate() + 1);
-    }
-    return dates;
+  const allowedTimes = {
+    6: [ // Cumartesi
+      "14:00",
+      "15:00",
+      "16:00"
+    ],
+    0: [ // Pazar
+      "12:00",
+      "13:00",
+      "14:00",
+      "15:00"
+    ],
+    1: [ // Pazartesi
+      "13:00",
+      "14:00",
+      "15:00",
+      "16:00",
+      "17:00",
+      "18:00"
+    ]
   };
+  const [startDate, setStartDate] = useState(new Date());
+  const [dynamicAllowedTimes, setDynamicAllowedTimes] = useState(allowedTimes); // buraya dinamik data gelecek
+  const allowedDaysOfWeek = [6, 0 , 1]; // Cumartesi ve Pazar ve Pazartesi buraya gelen datanın keyleri gelecek bu günler seçilebilir olanlar
 
 
-    return (
-        <div>
-        <div className="date-picker-container">
-      <DatePicker
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        showTimeSelect
-        timeFormat="HH:mm"
-        timeIntervals={15}
-        dateFormat="dd/MM/yyyy HH:mm"
-        timeCaption="Saat"
-        locale={tr}
-        includeDateIntervals={includeDateIntervals}
-        includeDates={includeDates()}
+  function getAllowedDates() {
+    const currentDate = new Date();
+    const next2Months = new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 1);
+    const allowedDates = [];
+    let currentDateIndex = currentDate;
+    while (currentDateIndex < next2Months) {
+      const dayOfWeek = currentDateIndex.getDay();
+      if (allowedDaysOfWeek.includes(dayOfWeek)) {
+        const allowedTimesForDay = dynamicAllowedTimes[dayOfWeek].map(time => {
+          const [hour, minute = '00'] = time.split(':');
+          const date = new Date(currentDateIndex.getFullYear(), currentDateIndex.getMonth(), currentDateIndex.getDate(), Number(hour), Number(minute));
+          return date;
+        });
+        allowedDates.push(...allowedTimesForDay);
+      }
+      currentDateIndex.setDate(currentDateIndex.getDate() + 1);
+    }
+    return allowedDates;
+  }
+  
+  function getAllowedTimes(date) {
+    const dayOfWeek = date.getDay();
+    if (allowedDaysOfWeek.includes(dayOfWeek)) {
+      return dynamicAllowedTimes[dayOfWeek].map(time => {
+        const [hour, minute = '00'] = time.split(':');
+        return new Date(date.getFullYear(), date.getMonth(), date.getDate(), Number(hour), Number(minute));
+      });
+    }
+    return [];
+  }
 
-
-
-      />
-    </div>
-        </div>
-    );
+  return (
+    <DatePicker
+      selected={startDate}
+      onChange={date => setStartDate(date)}
+      minDate={subDays(new Date(), 0)}
+      maxDate={addDays(new Date(), 60)}
+      filterTime={time => getAllowedTimes(startDate).some(allowedTime => time.getTime() === allowedTime.getTime())}
+      includeDates = {getAllowedDates()}
+      showTimeSelect
+      timeFormat="HH:mm"
+      timeIntervals={60}
+      timeCaption="Saat"
+      dateFormat="d MMMM yyyy, EEEE"
+      placeholderText="Tarih seçiniz"
+      shouldCloseOnSelect={false}
+      locale={tr}
+    />
+  );
 }
 
 export default ReactDatePicker;
