@@ -15,31 +15,23 @@ import Footer from "./components/footer/footer";
 import Login from "./pages/login/Login";
 import ModalContext from "./context/context";
 import AboutUs from "./pages/about-us/AboutUs";
-import RegisterExperienced from "./pages/register-experienced/RegisterExperienced"
+import RegisterExperienced from "./pages/register-experienced/RegisterExperienced";
 import "react-datepicker/dist/react-datepicker.css";
 import { getAccessToken } from "./auth/auth.service";
 import jwtDecode from "jwt-decode";
-
-
-
-
 
 //Import ProtectedRoutes
 import ProtectedRoutes from "./auth/ProtectedRoutes";
 import api from "./services/api";
 
-
-
-
 function App() {
-
-  if(getAccessToken() !==null){
-    const visitor = jwtDecode(getAccessToken()).sub 
+  if (getAccessToken() !== null) {
+    const visitor = jwtDecode(getAccessToken()).sub;
     let visitObject = {
-      visitor:visitor,
-      value:true
-    }
-    api.post('/user/visitor', visitObject)
+      visitor: visitor,
+      value: true,
+    };
+    api.post("/user/visitor", visitObject);
   }
 
   return (
@@ -56,7 +48,10 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               <Route path="/profile/settings" element={<Settings />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/register-to-be-experienced" element={<RegisterExperienced/>} />
+              <Route
+                path="/register-to-be-experienced"
+                element={<RegisterExperienced />}
+              />
             </Route>
           </Routes>
         </BrowserRouter>
