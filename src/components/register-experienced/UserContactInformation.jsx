@@ -2,9 +2,14 @@ import React from "react";
 import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 function UserContactInformation(props) {
-  const {formEventHandler, registerExperiencedForm} = props;
+  const {formEventHandler,
+         registerExperiencedForm,
+         registerSteps
+    } = props;
   return (
-    <div className="user-contact-information-container my-3 box-shadow">
+    <div className="user-contact-information-container my-3 box-shadow"
+     hidden = {registerSteps === 0 ? false : true}
+    >
       <section className="user-contact-experienced-form-area ">
         <div className="user-contact-experienced-form-header-container py-2">
           <span className="user-contact-experienced-form-header-content">
@@ -174,7 +179,7 @@ function UserContactInformation(props) {
         <Button className="register-experienced-submit-button btn-pink"
         onClick={registerExperiencedForm}
         >
-          Başvuruyu Tamamla
+         Sonraki Adım
         </Button>
       </div>
       </section>

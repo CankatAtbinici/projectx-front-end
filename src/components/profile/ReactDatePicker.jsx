@@ -3,32 +3,30 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import tr from 'date-fns/locale/tr';
 import { subDays, addDays } from 'date-fns';
+import { useContext } from "react";
+import { Context } from "../../context/context";
 
 function ReactDatePicker(props) {
-  const allowedTimes = {
-    6: [ // Cumartesi
-      "14:00",
-      "15:00",
-      "16:00"
-    ],
-    0: [ // Pazar
-      "12:00",
-      "13:00",
-      "14:00",
-      "15:00"
-    ],
-    1: [ // Pazartesi
-      "13:00",
-      "14:00",
-      "15:00",
-      "16:00",
-      "17:00",
-      "18:00"
-    ]
-  };
+  const context = useContext(Context);
+  console.log(context.reservationTimeSubmitObject)
+  const allowedTimes = context.reservationTimeSubmitObject;
+
+
+
+  
   const [startDate, setStartDate] = useState(new Date());
-  const [dynamicAllowedTimes, setDynamicAllowedTimes] = useState(allowedTimes); // buraya dinamik data gelecek
-  const allowedDaysOfWeek = [6, 0 , 1]; // Cumartesi ve Pazar ve Pazartesi buraya gelen datanın keyleri gelecek bu günler seçilebilir olanlar
+  const [dynamicAllowedTimes, setDynamicAllowedTimes] = useState(allowedTimes);
+
+
+  
+  //change format of days of week 
+  const allowedDaysOfWeek = [] 
+  for (let i = 0; i < Object.keys(allowedTimes).length; i++) {
+    let number = Number( Object.keys(allowedTimes)[i]);
+    if (!isNaN(number)) {
+      allowedDaysOfWeek.push(number);
+    }
+  }
 
 
   function getAllowedDates() {

@@ -56,6 +56,7 @@ const Profile = React.memo((props) => {
   
   }, []);
 
+
   const setPathName = () => {
     window.location.pathname = uuidv4();
   };

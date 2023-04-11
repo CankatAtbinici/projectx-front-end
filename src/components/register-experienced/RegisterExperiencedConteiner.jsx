@@ -4,11 +4,13 @@ import api from '../../services/api';
 import UserContactInformation from './UserContactInformation';
 import { Context } from '../../context/context';
 import { useContext } from 'react';
+import ReservationTimeSelection from './ReservationTimeSelection';
 
 function RegisterExperiencedConteiner(props) {
     
 
     const [registerFormData , setRegisterFormData] = useState([]);
+    const [registerSteps , setRegisterSteps] = useState(0)
     const {userProfileData} = useContext(Context);
 
     if(userProfileData===false){
@@ -23,9 +25,10 @@ function RegisterExperiencedConteiner(props) {
       const registerExperiencedForm = () =>[
         registerFormData.user_id = userProfileData.id,
         api.post('/register-experienced' , registerFormData ).then(data =>{
-            window.location.pathname = "/profile"
+           setRegisterSteps(1);
         })
       ]
+
 
 
     return (
@@ -34,6 +37,10 @@ function RegisterExperiencedConteiner(props) {
             <UserContactInformation
             formEventHandler ={formEventHandler}
             registerExperiencedForm = {registerExperiencedForm}
+            registerSteps = {registerSteps}
+            />
+            <ReservationTimeSelection
+             registerSteps = {registerSteps}
             />
         </div>
     );

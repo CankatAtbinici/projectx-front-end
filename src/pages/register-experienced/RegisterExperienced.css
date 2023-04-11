@@ -33,5 +33,36 @@
 
 }
 
+.reservation-items-top-content{
+    font-weight: 400;
+}
+
+
+
+.reservation-items-top{
+display:flex;
+justify-content:center;
+min-height: 50px;
+background-color: #ff385c;
+color: white;
+font-weight: 900;
+flex-direction: column;
+align-items: center;
+}
+
+.reservation-selection-footer{
+    display:flex;
+    justify-content:center;
+}
+
+.send-reservation-btn{
+    
+}
+.reservation-day-selection-button{
+    display: flex;
+    min-width: 100px;
+    justify-content: center;
+}
+
 
 
