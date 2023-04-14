@@ -11,9 +11,8 @@ function ProfileContainer(props) {
   const { isUSerProfileOwner } = props;
   const context = useContext(Context);
   const userProfileData = context.userProfileData;
-
+  
   //USER AVARAGE RATE FORMATTER
-
   const formattedAvarageRate = () => {
     if (userProfileData.user_rate && userProfileData.user_rate[0]) {
       const avarageRate = Number(userProfileData.user_rate[0].average_rate);
@@ -65,7 +64,10 @@ function ProfileContainer(props) {
     <div className="user-profile-container container-fluid">
       <div className="row">
         <div className="col-sm-12 col-md-5">
-          <UserProfileCard formatLastSeenDate={formatLastSeenDate} />
+          <UserProfileCard
+           formatLastSeenDate={formatLastSeenDate}
+           isUserProfileOwner = {isUSerProfileOwner} 
+          />
         </div>
 
         {userProfileData.status == 1 ? (

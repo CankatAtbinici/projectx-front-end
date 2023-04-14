@@ -3,11 +3,12 @@ import { Button, ButtonGroup, Input } from "reactstrap";
 import { useState } from "react";
 import { useContext } from "react";
 import { Context } from "../../context/context";
+import api from "../../services/api";
 
 function ReservationTimeSelection(props) {
   const { registerSteps } = props;
-  
   const context = useContext(Context)
+  const {registerFormData} = useContext(Context);
   const [sundaySelected, setSundaySelected] = useState([]) 
   const [mondaySelected, setMondaySelected] = useState([]);
   const [tuesdaySelected, setTuesdaySelected] = useState([]) 
@@ -133,7 +134,7 @@ function ReservationTimeSelection(props) {
 
   
 
-  const sendReservationTimesEventHandler = () => {
+  const sendExperiencedUserInformationForm = () => {
     let timeObject = {};
   
     daySelected.forEach((day) => {
@@ -163,8 +164,17 @@ function ReservationTimeSelection(props) {
           break;
       }
     });
-context.setReservationTimeSubmitObject(timeObject)
-console.log(context.reservationTimeSubmitObject)
+
+const experiencedUserInformationObject = {
+  times : timeObject,
+  info : registerFormData
+}
+api.post('/register-experienced' ,experiencedUserInformationObject  ).then(data =>{
+  if(data){
+    console.log(data);
+    //window.location.pathname = '/profile';
+  }
+})
   };
 
   return (
@@ -1660,15 +1670,13 @@ console.log(context.reservationTimeSubmitObject)
           </div>
           
         </div>
-
-
       </div>
 
         <div className="reservation-selection-footer">
         <div>
           <Button
           className="send-reservation-btn btn-pink"
-          onClick={sendReservationTimesEventHandler}
+          onClick={sendExperiencedUserInformationForm}
           >
            Kaydet
           </Button>

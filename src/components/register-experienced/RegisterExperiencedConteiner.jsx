@@ -9,9 +9,11 @@ import ReservationTimeSelection from './ReservationTimeSelection';
 function RegisterExperiencedConteiner(props) {
     
 
-    const [registerFormData , setRegisterFormData] = useState([]);
+    const context = useContext(Context);
     const [registerSteps , setRegisterSteps] = useState(0)
-    const {userProfileData} = useContext(Context);
+    const {userProfileData}     =       useContext(Context);
+    const {registerFormData}    =       useContext(Context);
+    const {setRegisterFormData} =       useContext(Context);
 
     if(userProfileData===false){
         window.location.pathname = "/"
@@ -19,16 +21,13 @@ function RegisterExperiencedConteiner(props) {
     const formEventHandler = (e) => {
         e.preventDefault();
         setRegisterFormData({ ...registerFormData, [e.target.name]: e.target.value });
-        console.log(registerFormData)
       };
 
-      const registerExperiencedForm = () =>[
-        registerFormData.user_id = userProfileData.id,
-        api.post('/register-experienced' , registerFormData ).then(data =>{
-           setRegisterSteps(1);
-        })
-      ]
+      const registerExperiencedForm = () =>{
+        registerFormData.user_id = userProfileData.id
+        setRegisterSteps(1);
 
+      }
 
 
     return (

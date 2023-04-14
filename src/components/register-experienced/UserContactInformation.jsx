@@ -21,7 +21,7 @@ function UserContactInformation(props) {
           <Form>
             <FormGroup>
               <Label for="id-number">TC Kimlik Numarası</Label>
-              <Input type="text" name="id_number" id="id-number" required 
+              <Input type="text" name="tc_id_number" id="id-number" required 
               onChange={(e) =>formEventHandler(e)}
               />
             </FormGroup>

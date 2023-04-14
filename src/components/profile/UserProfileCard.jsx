@@ -18,7 +18,7 @@ import {
 import { Link } from "react-router-dom";
 
 function UserProfileCard(props) {
-  const { formatLastSeenDate } = props;
+  const { formatLastSeenDate , isUserProfileOwner } = props;
 
   //USER CREATED TİME FORMATTER
   const { userProfileData } = useContext(Context);
@@ -90,7 +90,7 @@ function UserProfileCard(props) {
             </div>
           </div>
           <div>
-            {userProfileData.status !== 1 && (
+            {userProfileData.status !== 1 && isUserProfileOwner (
               <span>
                 <Link
                   to="/register-to-be-experienced"

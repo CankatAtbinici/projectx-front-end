@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import tr from 'date-fns/locale/tr';
@@ -8,15 +8,11 @@ import { Context } from "../../context/context";
 
 function ReactDatePicker(props) {
   const context = useContext(Context);
-  console.log(context.reservationTimeSubmitObject)
-  const allowedTimes = context.reservationTimeSubmitObject;
-
-
-
-  
   const [startDate, setStartDate] = useState(new Date());
-  const [dynamicAllowedTimes, setDynamicAllowedTimes] = useState(allowedTimes);
-
+  const allowedTimes =  context.userProfileData.allowed_times &&
+  JSON.parse(context.userProfileData.allowed_times['vars']) ?
+  JSON.parse(context.userProfileData.allowed_times['vars']) :
+  [];
 
   
   //change format of days of week 
@@ -37,7 +33,7 @@ function ReactDatePicker(props) {
     while (currentDateIndex < next2Months) {
       const dayOfWeek = currentDateIndex.getDay();
       if (allowedDaysOfWeek.includes(dayOfWeek)) {
-        const allowedTimesForDay = dynamicAllowedTimes[dayOfWeek].map(time => {
+        const allowedTimesForDay = allowedTimes[dayOfWeek].map(time => {
           const [hour, minute = '00'] = time.split(':');
           const date = new Date(currentDateIndex.getFullYear(), currentDateIndex.getMonth(), currentDateIndex.getDate(), Number(hour), Number(minute));
           return date;
@@ -52,7 +48,7 @@ function ReactDatePicker(props) {
   function getAllowedTimes(date) {
     const dayOfWeek = date.getDay();
     if (allowedDaysOfWeek.includes(dayOfWeek)) {
-      return dynamicAllowedTimes[dayOfWeek].map(time => {
+      return allowedTimes[dayOfWeek].map(time => {
         const [hour, minute = '00'] = time.split(':');
         return new Date(date.getFullYear(), date.getMonth(), date.getDate(), Number(hour), Number(minute));
       });

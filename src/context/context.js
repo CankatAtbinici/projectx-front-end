@@ -7,7 +7,8 @@ const ModalContext = ({ children }) => {
   const [userProfileData , setUserProfileData ] = useState(false)
   const [allUserLandingPageData , setAllUserLandingPageData] = useState(false)
   const [userLastSeen, setUserLastSeen] = useState("12-12-2023");
-  const [reservationTimeSubmitObject, setReservationTimeSubmitObject] = useState([])
+  const [registerFormData , setRegisterFormData] = useState([]);
+  const {visitingProfileData , setVisitingProfileData} = useState([]);
 
   return (
     <Context.Provider
@@ -20,8 +21,10 @@ const ModalContext = ({ children }) => {
         setAllUserLandingPageData,
         userLastSeen,
         setUserLastSeen,
-        reservationTimeSubmitObject,
-        setReservationTimeSubmitObject
+        registerFormData,
+        setRegisterFormData,
+        visitingProfileData,
+        setVisitingProfileData
       }}
     >
       {children}
