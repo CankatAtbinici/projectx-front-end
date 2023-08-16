@@ -2,9 +2,27 @@
 import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import ReactDatePicker from "./ReactDatePicker";
-import { FormGroup,Label,Input, Button } from "reactstrap";
+import { FormGroup,Input, Button } from "reactstrap";
 
 function ReservationDatePicker(props) {
+
+   const [reservationRequest , setReservationRequest] = useState(false);
+   const [startDate, setStartDate] = useState(new Date());
+   const reservationRequestHandler = (event) => {
+    if(event.name !== undefined){
+        setReservationRequest({
+            ...reservationRequest,
+            [event.name]: event.value
+          });
+    }else{
+    setReservationRequest({
+        ...reservationRequest,
+        [event.target.name]: event.target.value
+      });
+    }
+
+   }
+  
 
     return (
         <div className='reservation-date-picker-container '>
@@ -16,7 +34,11 @@ function ReservationDatePicker(props) {
 
             <section className='reservation-card-body py-2'>
                 <div className="reservation-card-body-head">
-                <ReactDatePicker/>
+                <ReactDatePicker
+                startDate = {startDate}
+                setStartDate = {setStartDate}
+                reservationRequestHandler = {reservationRequestHandler}
+                />
                 <div className="reservation-card-experience-selection">
                 <div className="form-check reservation-card-experience-item">
                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" /> 
@@ -44,10 +66,13 @@ function ReservationDatePicker(props) {
                     
                   <div className="date-picker-message-area">
                     <FormGroup className="py-3 mx-2">
-                            <Input  type="textarea" name="text" id="reservation-text-content" placeholder="Reservasyon hakkında söylemek istediklerinizi buraya yazabilirsiniz" />
+                            <Input  type="textarea" name="text_msg" id="Mesajınızı burada iletebilirsiniz" 
+                            onChange={(e) => {reservationRequestHandler(e)}}/>
                     </FormGroup>
                     <FormGroup>
-                        <Button className="reservation-submit-button mx-2">
+                        <Button className="reservation-submit-button mx-2"
+                        onClick={(() => alert(reservationRequest.date_time + " " + "tarihinde" + " " +  reservationRequest.text_msg + 'istediniz'))}
+                        >
                                     Gönder
                         </Button>
                     </FormGroup>

@@ -90,7 +90,7 @@ function UserProfileCard(props) {
             </div>
           </div>
           <div>
-            {userProfileData.status !== 1 && isUserProfileOwner (
+            {(userProfileData.status !== 1 && isUserProfileOwner() ) && (
               <span>
                 <Link
                   to="/register-to-be-experienced"

@@ -6,9 +6,10 @@ import { subDays, addDays } from 'date-fns';
 import { useContext } from "react";
 import { Context } from "../../context/context";
 
-function ReactDatePicker(props) {
+function ReactDatePicker(props) { 
+  const {startDate, setStartDate , reservationRequestHandler } = props;
   const context = useContext(Context);
-  const [startDate, setStartDate] = useState(new Date());
+
   const allowedTimes =  context.userProfileData.allowed_times &&
   JSON.parse(context.userProfileData.allowed_times['vars']) ?
   JSON.parse(context.userProfileData.allowed_times['vars']) :
@@ -22,6 +23,15 @@ function ReactDatePicker(props) {
     if (!isNaN(number)) {
       allowedDaysOfWeek.push(number);
     }
+  }
+
+  const reservationDatePickerOncChangeEventHandler = (date) => {
+    setStartDate(date);
+    const reservationObject  = {
+      name: "date_time",
+      value : startDate
+    }
+    reservationRequestHandler(reservationObject)
   }
 
 
@@ -59,7 +69,7 @@ function ReactDatePicker(props) {
   return (
     <DatePicker
       selected={startDate}
-      onChange={date => setStartDate(date)}
+      onChange={date => reservationDatePickerOncChangeEventHandler(date)}
       minDate={subDays(new Date(), 0)}
       maxDate={addDays(new Date(), 60)}
       filterTime={time => getAllowedTimes(startDate).some(allowedTime => time.getTime() === allowedTime.getTime())}

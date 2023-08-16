@@ -202,7 +202,7 @@ justify-content: space-between;
   width: 20%;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column; 
 }
 .login-form-parent{
   display: flex;
